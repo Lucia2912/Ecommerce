@@ -22,6 +22,7 @@ public class InvoiceDetailService {
         return repository.findAll();
     }
 
+
     public Optional<InvoiceDetail> readOneInvoiceDetail(Integer id){
         return repository.findById(id);
     }

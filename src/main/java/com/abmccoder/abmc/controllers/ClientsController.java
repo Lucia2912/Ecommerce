@@ -11,13 +11,24 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path="api/v1/clients")
+@RequestMapping(path="api/v1/auth")
 public class ClientsController {
     @Autowired
     private ClientsService service;
 
-    @PostMapping()
+    @PostMapping("/register")
     private ResponseEntity<Client> saveClient(@RequestBody Client client){
+        try{
+            service.saveClient(client);
+            return new ResponseEntity<>(client, HttpStatus.CREATED);
+        } catch (Exception exception){
+            System.out.println(exception);
+            throw new RuntimeException("Error el crear cliente");
+        }
+    }
+
+    @PutMapping("/me")
+    private ResponseEntity<Client> updateClient(@RequestBody Client client){
         try{
             service.saveClient(client);
             return new ResponseEntity<>(client, HttpStatus.CREATED);

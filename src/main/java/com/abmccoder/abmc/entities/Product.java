@@ -20,6 +20,6 @@ public class Product {
     @Getter @Setter private int stock;
     @Getter @Setter private double price;
 
-    @OneToMany(mappedBy = "invoicedetail_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "product_id", cascade = CascadeType.ALL, orphanRemoval = true)
     @Getter @Setter private List<InvoiceDetail> detalleComprobantes;
 }

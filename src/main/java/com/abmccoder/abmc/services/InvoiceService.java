@@ -2,6 +2,7 @@ package com.abmccoder.abmc.services;
 
 import com.abmccoder.abmc.entities.Client;
 import com.abmccoder.abmc.entities.Invoice;
+import com.abmccoder.abmc.entities.InvoiceDetail;
 import com.abmccoder.abmc.repositories.ClientsRepository;
 import com.abmccoder.abmc.repositories.InvoicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ public class InvoiceService {
 
     public Optional<Invoice> readOneInvoice(Integer id){
         return repository.findById(id);
+    }
+
+    public List<Invoice> readInvoiceClient(Integer idCliente) {
+        return repository.findByClient(idCliente);
     }
 
     public void destroyOneInvoice (Integer id){

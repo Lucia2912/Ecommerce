@@ -25,6 +25,6 @@ public class Invoice {
     @Getter @Setter(AccessLevel.PUBLIC) private Client client_id;
 
 
-    @OneToMany(mappedBy = "invoicedetail_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "invoice_id", cascade = CascadeType.ALL, orphanRemoval = true)
     @Getter @Setter private List<InvoiceDetail> detalleComprobantes;
 }
