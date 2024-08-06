@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
-@Entity
+@Entity(name="clients")
 @Table(name="clients")
 @NoArgsConstructor @ToString @EqualsAndHashCode
 public class Client {
@@ -22,5 +22,6 @@ public class Client {
     @OneToMany(mappedBy = "client_id", cascade = CascadeType.ALL, orphanRemoval = true)
     @Getter @Setter private List<Invoice> invoices;
 
-
+    @OneToMany(mappedBy = "clientid", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Getter @Setter private List<Carts> carts;
 }

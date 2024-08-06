@@ -1,12 +1,12 @@
 package com.abmccoder.abmc.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-@Entity
-@Table(name="invoice")
+@Table(name="invoices")
+@Entity(name = "invoices")
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
@@ -22,9 +22,7 @@ public class Invoice {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
+    @JsonIgnore
     @Getter @Setter(AccessLevel.PUBLIC) private Client client_id;
 
-
-    @OneToMany(mappedBy = "invoice_id", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Getter @Setter private List<InvoiceDetail> detalleComprobantes;
 }

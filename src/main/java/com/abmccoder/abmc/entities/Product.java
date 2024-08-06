@@ -4,7 +4,7 @@ import lombok.*;
 
 import java.util.List;
 
-@Entity
+@Entity(name="products")
 @Table(name="products")
 @NoArgsConstructor
 @ToString
@@ -19,7 +19,4 @@ public class Product {
     @Getter @Setter private String code;
     @Getter @Setter private int stock;
     @Getter @Setter private double price;
-
-    @OneToMany(mappedBy = "product_id", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Getter @Setter private List<InvoiceDetail> detalleComprobantes;
 }

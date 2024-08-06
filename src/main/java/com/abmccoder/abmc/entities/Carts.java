@@ -1,13 +1,14 @@
 package com.abmccoder.abmc.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
-@Table(name="invoice_detail")
+@Entity(name="carts")
+@Table(name="carts")
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class InvoiceDetail {
+public class Carts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
@@ -16,12 +17,15 @@ public class InvoiceDetail {
 
     @Getter @Setter private int amount;
     @Getter @Setter private double price;
+    @Getter @Setter private boolean delivered;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @JsonIgnore
     @Getter @Setter private Product product_id;
 
     @ManyToOne
-    @JoinColumn(name = "invoice_id")
-    @Getter @Setter private Invoice invoice_id;
+    @JoinColumn(name = "clientid")
+    @JsonIgnore
+    @Getter @Setter private Client clientid;
 }

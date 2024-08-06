@@ -28,4 +28,23 @@ public class ClientsService {
     public void destroyOneClient (Integer id){
         repository.deleteById(id);
     }
+
+    public Client updateClient(Integer id, Client clientDetails) {
+        Optional<Client> client = repository.findById(id);
+        if (client.isPresent()) {
+            Client foundClient = client.get();
+            if (clientDetails.getName() != null) {
+                foundClient.setName(clientDetails.getName());
+            }
+            if (clientDetails.getDocnumber() != null) {
+                foundClient.setDocnumber(clientDetails.getDocnumber());
+            }
+            if (clientDetails.getLastname() != null) {
+                foundClient.setLastname(clientDetails.getLastname());
+            }
+            return repository.save(foundClient);
+        } else {
+            throw new RuntimeException("Client not found");
+        }
+    }
 }
